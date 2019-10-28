@@ -5,42 +5,12 @@
 -- Dumped from database version 9.5.19
 -- Dumped by pg_dump version 10.10 (Ubuntu 10.10-0ubuntu0.18.04.1)
 
--- Started on 2019-10-24 11:09:37 -03
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
-DROP DATABASE "judice-api-gateway";
 --
 -- TOC entry 2181 (class 1262 OID 16440)
 -- Name: judice-api-gateway; Type: DATABASE; Schema: -; Owner: judice-v2
 --
 
 CREATE DATABASE "judice-api-gateway" WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.utf8' LC_CTYPE = 'en_US.utf8';
-
-
-ALTER DATABASE "judice-api-gateway" OWNER TO "judice-v2";
-
-\connect -reuse-previous=on "dbname='judice-api-gateway'"
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
 
 --
 -- TOC entry 1 (class 3079 OID 12361)
@@ -71,9 +41,6 @@ CREATE SEQUENCE public.seq_atividade
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE public.seq_atividade OWNER TO "judice-v2";
-
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -90,9 +57,6 @@ CREATE TABLE public.atividade (
     rota character varying(100) NOT NULL
 );
 
-
-ALTER TABLE public.atividade OWNER TO "judice-v2";
-
 --
 -- TOC entry 182 (class 1259 OID 16443)
 -- Name: seq_perfil; Type: SEQUENCE; Schema: public; Owner: judice-v2
@@ -105,9 +69,6 @@ CREATE SEQUENCE public.seq_perfil
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE public.seq_perfil OWNER TO "judice-v2";
-
 --
 -- TOC entry 188 (class 1259 OID 18688)
 -- Name: perfil; Type: TABLE; Schema: public; Owner: judice-v2
@@ -117,9 +78,6 @@ CREATE TABLE public.perfil (
     id bigint DEFAULT nextval('public.seq_perfil'::regclass) NOT NULL,
     descricao character varying(50) NOT NULL
 );
-
-
-ALTER TABLE public.perfil OWNER TO "judice-v2";
 
 --
 -- TOC entry 183 (class 1259 OID 16445)
@@ -133,9 +91,6 @@ CREATE SEQUENCE public.seq_perfil_permissao
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE public.seq_perfil_permissao OWNER TO "judice-v2";
-
 --
 -- TOC entry 194 (class 1259 OID 18843)
 -- Name: perfilpermissao; Type: TABLE; Schema: public; Owner: judice-v2
@@ -146,9 +101,6 @@ CREATE TABLE public.perfilpermissao (
     perfil_id bigint NOT NULL,
     permissao_id bigint NOT NULL
 );
-
-
-ALTER TABLE public.perfilpermissao OWNER TO "judice-v2";
 
 --
 -- TOC entry 184 (class 1259 OID 16447)
@@ -162,9 +114,6 @@ CREATE SEQUENCE public.seq_permissao
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE public.seq_permissao OWNER TO "judice-v2";
-
 --
 -- TOC entry 192 (class 1259 OID 18821)
 -- Name: permissao; Type: TABLE; Schema: public; Owner: judice-v2
@@ -175,9 +124,6 @@ CREATE TABLE public.permissao (
     descricao character varying(100) NOT NULL,
     tag character varying(50) NOT NULL
 );
-
-
-ALTER TABLE public.permissao OWNER TO "judice-v2";
 
 --
 -- TOC entry 185 (class 1259 OID 16449)
@@ -191,9 +137,6 @@ CREATE SEQUENCE public.seq_permissao_atividade
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE public.seq_permissao_atividade OWNER TO "judice-v2";
-
 --
 -- TOC entry 193 (class 1259 OID 18827)
 -- Name: permissaoatividade; Type: TABLE; Schema: public; Owner: judice-v2
@@ -204,9 +147,6 @@ CREATE TABLE public.permissaoatividade (
     atividade_id bigint NOT NULL,
     permissao_id bigint NOT NULL
 );
-
-
-ALTER TABLE public.permissaoatividade OWNER TO "judice-v2";
 
 --
 -- TOC entry 186 (class 1259 OID 16451)
@@ -220,9 +160,6 @@ CREATE SEQUENCE public.seq_usuario
     NO MAXVALUE
     CACHE 1;
 
-
-ALTER TABLE public.seq_usuario OWNER TO "judice-v2";
-
 --
 -- TOC entry 187 (class 1259 OID 16453)
 -- Name: seq_usuario_perfil; Type: SEQUENCE; Schema: public; Owner: judice-v2
@@ -234,9 +171,6 @@ CREATE SEQUENCE public.seq_usuario_perfil
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
-ALTER TABLE public.seq_usuario_perfil OWNER TO "judice-v2";
 
 --
 -- TOC entry 190 (class 1259 OID 18705)
@@ -251,9 +185,6 @@ CREATE TABLE public.usuario (
     ativo boolean NOT NULL
 );
 
-
-ALTER TABLE public.usuario OWNER TO "judice-v2";
-
 --
 -- TOC entry 191 (class 1259 OID 18743)
 -- Name: usuarioperfil; Type: TABLE; Schema: public; Owner: judice-v2
@@ -264,9 +195,6 @@ CREATE TABLE public.usuarioperfil (
     usuario_id bigint NOT NULL,
     perfil_id bigint NOT NULL
 );
-
-
-ALTER TABLE public.usuarioperfil OWNER TO "judice-v2";
 
 --
 -- TOC entry 2170 (class 0 OID 18694)
@@ -527,15 +455,8 @@ ALTER TABLE ONLY public.usuarioperfil
 -- Name: SCHEMA public; Type: ACL; Schema: -; Owner: judice-v2
 --
 
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM "judice-v2";
-GRANT ALL ON SCHEMA public TO "judice-v2";
-GRANT ALL ON SCHEMA public TO PUBLIC;
-
-
 -- Completed on 2019-10-24 11:09:38 -03
 
 --
 -- PostgreSQL database dump complete
 --
-
