@@ -10,6 +10,7 @@ const helmet = require('helmet');
 var routes = require('./routes/routeManager');
 
 //Configuration
+const port = process.env.PORT || 5000;
 app.use(logger('dev'));
 app.use(helmet());
 app.use(express.json());
@@ -18,4 +19,4 @@ app.use(cors());
 routes.defineRoutes(app, httpProxy);
 
 var server = http.createServer(app);
-server.listen(5000);
+server.listen(port);
