@@ -7,7 +7,7 @@ module.exports = {
         serviceRoutes.createServiceRoutes(app, httpProxy);
 
         app.get('/', (req, res) => {
-            res.status(403).send("Forbidden");
+            res.status(200).send("Bem-vindo ao API Gateway");
         });
     }
 }

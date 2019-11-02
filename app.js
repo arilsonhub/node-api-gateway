@@ -1,5 +1,5 @@
 //Imports
-//require("dotenv-safe").config();
+require("dotenv-safe").config();
 var http = require('http');
 const express = require('express');
 const httpProxy = require('express-http-proxy');
